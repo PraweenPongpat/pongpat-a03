@@ -1,0 +1,8 @@
+
+a
+java:S1854"FRemove this useless assignment to local variable "resultAnagramCheck".(·Ä¯®ùÿÿÿÿ
+R
+java:S1481"7Remove this unused "resultAnagramCheck" local variable.(·Ä¯®ùÿÿÿÿ
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(ªÓ¼áþÿÿÿÿ8‰ ›•Â/
+[
+java:S3400"9Remove this method and declare a constant for this value.(Ö§”Óþÿÿÿÿ8šæ¥•Â/
