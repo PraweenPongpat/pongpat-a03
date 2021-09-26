@@ -25,11 +25,7 @@ public class Solution24 {
         boolean resultAnagramCheck = check.isAnagram(word1,word2);
 
         //determine "are" or "are not" from the result
-        String flag;
-        if(resultAnagramCheck)
-            flag = " are ";
-        else
-            flag = " are not ";
+        String flag = (resultAnagramCheck)? " are " : " are not ";
 
         //display output
         System.out.println("\""+word1+"\" and \""+word2+"\""+flag+"anagrams.");
@@ -42,5 +38,4 @@ public class Solution24 {
         //read string from user and return that string
         return input.nextLine();
     }
-
 }

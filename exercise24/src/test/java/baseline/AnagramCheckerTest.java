@@ -12,9 +12,10 @@ class AnagramCheckerTest {
         String word2 = "olleh";
         AnagramChecker check = new AnagramChecker(word1,word2);
 
-
+        //call isAnagram to test
         boolean res = check.isAnagram(word1,word2);
 
+        //check test result
         assertEquals(res,true);
     }
     @Test
@@ -24,12 +25,10 @@ class AnagramCheckerTest {
         String word2 = "ollej";
         AnagramChecker check = new AnagramChecker(word1,word2);
 
-
+        //call isAnagram to test
         boolean res = check.isAnagram(word1,word2);
 
+        //check test result
         assertEquals(res,false);
     }
-
-
-
 }
