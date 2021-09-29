@@ -22,15 +22,17 @@ public class Password {
         char[] passwordArr = stringToCharArrayConverter(password);
 
         //make variable needed
-        int numDigit=0, numLetter=0, numSpecialChar=0;
+        int numDigit=0;
+        int numLetter=0;
+        int numSpecialChar=0;
 
         //make loop through the array
-        for(int i=0; i < passwordArr.length; i++) {
+        for (char c : passwordArr) {
             //each iteration, check what kind of char is it, based on ASCII value
             //to each kind found, increment1 to the value
-            if (Character.isDigit(passwordArr[i]))
+            if (Character.isDigit(c))
                 numDigit++;
-            else if ((Character.isUpperCase(passwordArr[i]))||(Character.isLowerCase(passwordArr[i])))
+            else if ((Character.isUpperCase(c)) || (Character.isLowerCase(c)))
                 numLetter++;
             else
                 numSpecialChar++;

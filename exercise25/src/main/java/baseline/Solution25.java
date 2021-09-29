@@ -26,24 +26,31 @@ public class Solution25 {
         String keyword = sol.keywordFinder(strength);
 
         //display output
-        System.out.println();
+        System.out.println("The password '" + password + "' is a " + keyword + " password!!");
 
     }
 
     private String keywordFinder(int value){
         //for the 'value'...
-        //if 0 , return unknown strength
-        //if 1 , return very week
-        //if 2 , return week
-        //if 3 , return strong
-        //if 4 , return very strong
-        return "";
+        return switch (value) {
+            //if 1 , return very week
+            case 1 -> "very week";
+            //if 2 , return week
+            case 2 -> "week";
+            //if 3 , return strong
+            case 3 -> "strong";
+            //if 4 , return very strong
+            case 4 -> "very strong";
+            //otherwise, unknown
+            default -> "unknown";
+        };
     }
 
     private String getPassword(){
         //prompt user for a password
+        System.out.println("Please enter a password, I will tell you the strength of it.");
         //read string
         //return that string
-        return "";
+        return input.nextLine();
     }
 }
