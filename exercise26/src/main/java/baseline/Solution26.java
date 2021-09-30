@@ -14,31 +14,48 @@ public class Solution26 {
         //allocate class solution, to use .getDouble
         Solution26 sol = new Solution26();
 
-        //get APR, using getDouble, convert it to dailyAPR by div with 365.00
-        Double dailyAPR = (sol.getDouble("")/365.00);
         //get balance, using getDouble
-        Double balance = sol.getDouble("");
+        Double balance = sol.getDouble("What is your balance?: ");
+        //get APR, using getDouble, convert it to dailyAPR by div with 365.00
+        Double dailyAPR = (sol.getDouble("What is the APR on the card (as a percent)?: ")/(365.00*100.00));
         //get monthly payment, using getDouble
-        Double monthlyPayment = sol.getDouble("");
+        Double monthlyPayment = sol.getDouble("What is the monthly payment you can make?: ");
 
         //allocate class APRCalculator
-        //init with values above
-        PaymentCalculator paymentCalculator = new PaymentCalculator(0,0,0);
+        //init with values above by class's constructor
+        PaymentCalculator paymentCalculator = new PaymentCalculator(dailyAPR,balance,monthlyPayment);
 
         //use PaymentCalculator class to get the result
         int numMonthLeft = paymentCalculator.calculateMonthsUntilPadOff();
 
         //display outputs
-        System.out.println();
+        System.out.println("It will take you "+numMonthLeft+" months to pay off this card.");
     }
 
     private double getDouble (String prompt){
         //display prompt for value
-        //read a double
-        //make sure to get a non-negative numeric value
+        //read a double, make sure to get a non-negative numeric value
         //      using try-catches with exceptions
         //use loop, until the user enter number
+        double number=0.00;
+        while(true){
+            System.out.print(prompt);
+            try{
+                number = Double.parseDouble(input.nextLine());
+                if(number<0.00) {
+                    throw new IllegalArgumentException();
+                }
+                break;
+            } catch (NumberFormatException nfe){
+                System.out.println("Please re-enter a numerical value!");
+                continue;
+            } catch (IllegalArgumentException e){
+                System.out.println("Please re-enter a non-negative number!");
+                continue;
+            }
+
+        }
         //return that number
-        return 0.00;
+        return number;
     }
 }

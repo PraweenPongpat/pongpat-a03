@@ -39,17 +39,15 @@ public class PaymentCalculator {
     //key function, takes in no argument and return result
     public int calculateMonthsUntilPadOff() {
         //call the numMonthCalculator, pass in values
-        int result = numMonthCalculator(dailyAPR,roundIt(balance),monthlyPayment);
+        int result = numMonthCalculator(getDailyAPR(),roundIt(getBalance()),getMonthlyPayment());
         //return the result
         return result;
     }
 
     //this method is used to calculate the math only
     private int numMonthCalculator(double dailyAPR, double balance, double monthlyPayment){
-        //assuming currentCalculation has all the data needed,
         //calculate from the formula given:  n = -(1/30) * log(1 + b/p * (1 - (1 + i)^30)) / log(1 + i)
-        //round up the number to next integer
-        //return the value from calculation
+        //round up the number to next integer, return the value
         return (int)Math.ceil((-1/30.0)*Math.log10(1+roundIt(balance/monthlyPayment)*(1-Math.pow(1+dailyAPR,30)))/Math.log10(1+dailyAPR));
     }
 
