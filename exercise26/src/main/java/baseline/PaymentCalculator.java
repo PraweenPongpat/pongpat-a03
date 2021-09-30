@@ -39,9 +39,8 @@ public class PaymentCalculator {
     //key function, takes in no argument and return result
     public int calculateMonthsUntilPadOff() {
         //call the numMonthCalculator, pass in values
-        int result = numMonthCalculator(getDailyAPR(),roundIt(getBalance()),getMonthlyPayment());
         //return the result
-        return result;
+        return numMonthCalculator(getDailyAPR(), roundIt(getBalance()), getMonthlyPayment());
     }
 
     //this method is used to calculate the math only
