@@ -28,6 +28,8 @@ public class Solution26 {
         //use PaymentCalculator class to get the result
         int numMonthLeft = paymentCalculator.calculateMonthsUntilPadOff();
 
+        //display outputs
+        System.out.println();
     }
 
     private double getDouble (String prompt){

@@ -1,21 +1,0 @@
-
-[
-java:S1854"@Remove this useless assignment to local variable "numMonthLeft".(µé¥›ùÿÿÿÿ
-]
-java:S1854"BRemove this useless assignment to local variable "monthlyPayment".(²ß²Žùÿÿÿÿ
-Q
-java:S1854";Remove this useless assignment to local variable "balance".(î¿›ª
-^
-java:S1854"<Remove this useless assignment to local variable "dailyAPR".(ŒÈªþÿÿÿÿ8§Êé¦Ã/
-O
-java:S1481"-Remove this unused "dailyAPR" local variable.(ŒÈªþÿÿÿÿ8©Êé¦Ã/
-B
-java:S1481",Remove this unused "balance" local variable.(î¿›ª
-N
-java:S1481"3Remove this unused "monthlyPayment" local variable.(²ß²Žùÿÿÿÿ
-L
-java:S1481"1Remove this unused "numMonthLeft" local variable.(µé¥›ùÿÿÿÿ
-N
-java:S3400("9Remove this method and declare a constant for this value.(èå·	
-H
-java:S1172!"-Remove this unused method parameter "prompt".(È×ÁÞþÿÿÿÿ

@@ -13,6 +13,17 @@ public class PaymentCalculator {
         this.balance = balance;
         this.monthlyPayment = monthlyPayment;
     }
+    //declare setters, use on test purposes only, hence no validation needed
+    //the validation are already included when taking in input
+    public void setDailyAPR(double newAPR){
+        dailyAPR = newAPR;
+    }
+    public void setBalance(double newBalance){
+        balance = newBalance;
+    }
+    public void setMonthlyPayment(double newMonthlyPay){
+        monthlyPayment = newMonthlyPay;
+    }
 
     //declare getters
     public double getDailyAPR() {
@@ -28,20 +39,23 @@ public class PaymentCalculator {
     //key function, takes in no argument and return result
     public int calculateMonthsUntilPadOff() {
         //call the numMonthCalculator, pass in values
-        int result = numMonthCalculator(dailyAPR,balance,monthlyPayment);
+        int result = numMonthCalculator(dailyAPR,roundIt(balance),monthlyPayment);
         //return the result
-        return 0;
+        return result;
     }
 
     //this method is used to calculate the math only
-    //      intentionally, should be private
-    //      but only for @Test demo, I am going to leave it as public
-    public int numMonthCalculator(double dailyAPR, double balance, double monthlyPayment){
+    private int numMonthCalculator(double dailyAPR, double balance, double monthlyPayment){
         //assuming currentCalculation has all the data needed,
-        //calculate from the formula given:
-        //      n = -(1/30) * log(1 + b/p * (1 - (1 + i)^30)) / log(1 + i)
+        //calculate from the formula given:  n = -(1/30) * log(1 + b/p * (1 - (1 + i)^30)) / log(1 + i)
+        //round up the number to next integer
         //return the value from calculation
-        return 0;
+        return (int)Math.ceil((-1/30.0)*Math.log10(1+roundIt(balance/monthlyPayment)*(1-Math.pow(1+dailyAPR,30)))/Math.log10(1+dailyAPR));
+    }
+
+    //use only to round number up
+    private double roundIt(double value){
+        return Math.ceil(value*100.00)/100.00;
     }
 
 }
