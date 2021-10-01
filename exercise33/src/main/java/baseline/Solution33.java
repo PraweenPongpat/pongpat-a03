@@ -5,11 +5,13 @@
 
 package baseline;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Solution33 {
     private static final int NUMBER_OF_ANSWERS = 4;
     public static final Scanner input = new Scanner(System.in);
+    public static Random random = new Random();
 
     public static void main(String[] args) {
         Solution33 sol = new Solution33();
@@ -32,7 +34,7 @@ public class Solution33 {
         //create random number between 0 and 3
         //using Random class
         //return that number
-        return 0;
+        return random.nextInt(NUMBER_OF_ANSWERS);
     }
 
     private String getAnswer(){
