@@ -20,23 +20,26 @@ public class Solution29 {
         int numYear = sol.calcNumYear(number);
 
         //display output
-        System.out.println();
+        System.out.println("It will take "+ numYear + " years to double your initial investment.");
     }
 
     private double getValidatedDouble() {
-        //prompt user for the number
-        System.out.println();
-
         //begin loop to trap bad input
+        while(true) {
+            //prompt user for the number
+            System.out.print("What is the rate of return?: ");
             //read input
-            //if input is non-numerical value: print "Sorry, that is not a valid input" also
-            //keep the loop going
-            //if input is zero: print "Sorry, that is not a valid input"
-            // keep the loop going
-            //else, this means it is numerical non-zero number
-            //get out of loop
-
-        return 0;
+            try{
+                double result = Double.parseDouble(input.nextLine());
+                if (result>-0.00001 && result<0.00001)
+                    throw new NumberFormatException();
+                return result;
+            } catch (NumberFormatException nfe){
+                //if input is non-numerical value
+                //or if input is zero           : print "Sorry, that is not a valid input"
+                System.out.println("Sorry, that is not a valid input");
+            }
+        }
     }
 
     public int calcNumYear (double value){
