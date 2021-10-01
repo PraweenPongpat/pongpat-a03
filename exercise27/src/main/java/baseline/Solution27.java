@@ -15,16 +15,16 @@ public class Solution27 {
         Solution27 sol = new Solution27();
 
         //get strings as needed, passing in proper prompt
-        String firstName = sol.getString("");
-        String lastName = sol.getString("");
-        String zipCode = sol.getString("");
-        String employeeID = sol.getString("");
+        String firstName = sol.getString("Enter the first name: ");
+        String lastName = sol.getString("Enter the last name: ");
+        String zipCode = sol.getString("Enter the ZIP code: ");
+        String employeeID = sol.getString("Enter the employee ID:");
 
         //allocate inputValidator class to use other functions as needed
-        InputValidator validator = new InputValidator("","","","");
+        InputValidator validator = new InputValidator();
 
         //call inputValidator class's toString that utilizes other methods
-        String result = validator.validateInput("","","","");
+        String result = validator.validateInput(firstName,lastName,zipCode,employeeID);
 
         //display output
         System.out.println(result);
@@ -32,8 +32,9 @@ public class Solution27 {
 
     private String getString(String prompt) {
         //display prompt
+        System.out.print(prompt);
         //read string
         //return that string
-        return "";
+        return input.nextLine();
     }
 }
