@@ -12,12 +12,18 @@ public class Solution30 {
     public static void main(String[] args) {
         Solution30 sol = new Solution30();
 
+        System.out.println("Here is basic multiplication table:");
+
+
         //outer loop, running from 1 to NUM_COL, inclusive
         for(int i = 1; i<=NUM_COL; i++){
             //inner loop, running from 1 to NUM_ROW, inclusive
-            for(int j = 1; j<NUM_ROW; j++){
+            for(int j = 1; j<=NUM_ROW; j++){
                 //display the result using mulABWithTab method
+                System.out.print(sol.mulABWithTab(i,j));
             }
+            //enter newline
+            System.out.println("");
         }
     }
 
