@@ -15,25 +15,37 @@ public class Solution31 {
         Solution31 sol = new Solution31();
 
         //get validated integer from user
-        int age = sol.getValidatedInt("","age");
-        int restingHR = sol.getValidatedInt("","heart rate");
+        int restingHR = sol.getValidatedInt("heart rate");
+        int age = sol.getValidatedInt("age");
 
 
         //allocate KarvonenHeartRate class
-        KarvonenHeartRate KHR = new KarvonenHeartRate(0,0);
+        KarvonenHeartRate KHR = new KarvonenHeartRate(age,restingHR);
 
         //display output through KarvonenHeartRate class
         KHR.displayTable();
 
     }
 
-    private int getValidatedInt(String prompt,String key) {
+    private int getValidatedInt(String key) {
         //begin loop
-        //display prompt
-        //read input
-        //if input is non-numerical value
-        //or if input is not positive number
-        //      display "input cannot be negative number
-        return 0;
+        while (true) {
+            //display prompt
+            //read input
+            //if input is non-numerical value
+            //or if input is not positive number
+            //      display "input cannot be negative number
+            System.out.print("What is your "+key+"?: ");
+            try {
+                int result = Integer.parseInt(input.nextLine());
+                if (result<=0)
+                    throw new IllegalArgumentException();
+                return result;
+            } catch (NumberFormatException nfe){
+                System.out.println("Please enter a numerical integer!!");
+            } catch (IllegalArgumentException e){
+                System.out.println(key+ " needs to be a positive integer!!");
+            }
+        }
     }
 }
