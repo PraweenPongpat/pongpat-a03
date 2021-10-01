@@ -1,19 +1,20 @@
 package baseline;
 
+import static baseline.Solution32.input;
+
 public class GuessingGame {
-    private int level;
 
     public char guessingGameApp(int level) {
         //declare variables
         int min = 1;    //min = 1
-        int max;        //max depends on level: 10^level
-        int answer=0;     //generate random number between min and max
+        int max = (int) Math.pow(10,level)  ;      //max depends on level: 10^level
+        int answer = (int)(Math.random()*(max-min+1)+min);;     //generate random number between min and max
 
         //display the first guess of the game
         System.out.println();
 
         //set the first guess from user
-        int guessingValue = getGuessNum("");
+        int guessingValue = getGuessNum("I have my number. What's your guess?: ",0);
         int numGuessed=1;   //track number fo guesses
         String prompt="";
 
@@ -26,7 +27,7 @@ public class GuessingGame {
             //  set prompt to "Too Low! guess again: "
 
             //using that prompt, get the other number
-            guessingValue = getGuessNum("");
+            guessingValue = getGuessNum("",guessingValue);
             //increment numGuessed by 1
         }
         //display the number of guesses
@@ -36,18 +37,27 @@ public class GuessingGame {
         //return that value
         return '?';
     }
-
-    public int getGuessNum(String prompt){
-        //display prompt to user
-        //read users input
-        //if user enter non-numerical number
-        //        display: "you have entered non-numerical answer, WRONG! guess again: "
-        //if user enter 1 or 2 or 3, get out of loop
-        //return that value
-        return 0;
+    public String determinePrompt(int answer, int guessingValue) {
+        return (guessingValue > answer) ? "Too High! guess again: " : "Too Low! guess again: ";
     }
 
-    public char isContinue(){
+    private int getGuessNum(String prompt,int currentValue){
+        //display prompt to user
+        System.out.println(prompt);
+        //read users input
+        //if user enter non-numerical number
+        //        display: "you have entered non-numerical answer, WRONG!"
+        //              return currentValue
+        //return that value
+        try {
+            return Integer.parseInt(input.nextLine());
+        } catch (NumberFormatException nfe){
+            System.out.println("you have entered non-numerical answer, WRONG!");
+        }
+        return currentValue;
+    }
+
+    private char isContinue(){
         //prompt user to enter Y/y or N/n
         //read user input
         //convert to lowercase
