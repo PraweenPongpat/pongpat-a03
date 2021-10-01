@@ -25,12 +25,11 @@ public class Solution34 {
         employeeName[4] = "Jeremy Goodwin";
 
         //prompt user show how many name there is
-        System.out.println();
+        System.out.println("There are "+numEmployee+" employees:");
 
-        //prompt user all names in array
+        //prompt user all names in array, each iteration, display the name
         for (int i = 0; i < numEmployee; i++) {
-            //each iteration, display the name
-            System.out.println();
+            System.out.println(employeeName[i]);
         }
 
         //call getName to get the string from user
@@ -40,13 +39,18 @@ public class Solution34 {
         int indexEmp = sol.isEmployee(employeeName, numEmployee, firedEmployee);
 
         //if the name given is a worker, means index is 0-4
-        //call delProcessArray passing in the array name, name input, number of employee
-        employeeName = sol.delProcessArray(employeeName, indexEmp, numEmployee);
-        //this should delete the name inside the array
-        //decrement numEmployee by 1
+        if(indexEmp>=0) {
+            //access that name through the index
+            employeeName[indexEmp] = "";
+        }
 
-        //if the name given is not a worker, means index is negative
-        //display the origin array, don't do anything
+        //display the names according to the numEmployee
+        int numLeft = (indexEmp>=0)? numEmployee-1:numEmployee;
+        System.out.println("\nThere are "+numLeft+" employees:");
+        for (int i = 0; i < numEmployee; i++) {
+            if(employeeName[i].length()!=0)
+                System.out.println(employeeName[i]);
+        }
     }
 
     public int isEmployee(String[] employeeName, int numEmployee, String firedEmployee) {
@@ -55,36 +59,16 @@ public class Solution34 {
             //each iteration search for the name of firedEmployee
             if (employeeName[i].equals(firedEmployee))
                 return i;   //if the name is found, return that index
-
         }
         //if the name is not found, return -1
         return -1;
     }
 
-    private String[] delProcessArray(String[] employeeName, int indexEmp, int numEmployee) {
-        //access the name through that indexEmp and change it to null
-        employeeName[indexEmp] = "";
-        //make a loop go through names after the indexEmp
-        String temp;
-        int i;
-        for (i = indexEmp; i < numEmployee; i++){
-            //  swap the names up by 1 index
-            employeeName[i] = employeeName[i+1];
-            //  repeat the swapping till the end of array
-        }
-        //set the last name to null
-        employeeName[i] = "";
-
-        //return the array
-        return employeeName;
-    }
-
     private String getName() {
         //prompt user for the name to be deleted
+        System.out.print("\nEnter an employee name to remove: ");
         //read string from user
         //return that string
-        return"";
+        return input.nextLine();
     }
-
-
 }
