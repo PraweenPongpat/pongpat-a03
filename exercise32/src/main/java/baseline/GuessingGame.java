@@ -12,9 +12,6 @@ public class GuessingGame {
         int max = (int) Math.pow(10,level)  ;      //max depends on level: 10^level
         int answer = (rand.nextInt(max-1))+1;     //generate random number between 1 and max
 
-        //if needed to check answer
-        System.out.println("The answer is "+ answer);
-
         //set the first guess from user
         int guessingValue = getGuessNum("I have my number. What's your guess?: ",0);
         int numGuessed=1;   //track number fo guesses

@@ -29,8 +29,6 @@ public class Solution32 {
             //call the game
             keepGoing = game.guessingGameApp(level);
             //check if user want to continue the game
-            if(!keepGoing)
-                break;
         }
         System.out.println("No more games! Good Bye!");
     }
