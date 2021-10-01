@@ -8,8 +8,7 @@ class Solution33Test {
     private final Solution33 test = new Solution33();
     @Test
     void randomNumberGenTest(){
-        for (int i = 0; i<200; i++)
-        {
+        for (int i = 0; i<200; i++) {
             int randomNum = test.randomNumberGen();
             if (randomNum == 0) {
                 System.out.println("it's 0");
