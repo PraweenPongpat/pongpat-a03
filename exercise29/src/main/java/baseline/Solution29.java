@@ -43,7 +43,7 @@ public class Solution29 {
         //perform calculation 72/r
         //round the number up to the next integer
         //return the number
-        return 0;
+        return (int) Math.ceil(72/value);
     }
 
 
