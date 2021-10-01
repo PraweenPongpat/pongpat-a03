@@ -1,41 +1,44 @@
 package baseline;
 
+import java.util.Locale;
+import java.util.Random;
+
 import static baseline.Solution32.input;
 
 public class GuessingGame {
-
-    public char guessingGameApp(int level) {
+    Random rand = new Random();
+    public boolean guessingGameApp(int level) {
         //declare variables
-        int min = 1;    //min = 1
         int max = (int) Math.pow(10,level)  ;      //max depends on level: 10^level
-        int answer = (int)(Math.random()*(max-min+1)+min);;     //generate random number between min and max
+        int answer = (rand.nextInt(max-1))+1;     //generate random number between 1 and max
 
-        //display the first guess of the game
-        System.out.println();
+        //if needed to check answer
+        System.out.println("The answer is "+ answer);
 
         //set the first guess from user
         int guessingValue = getGuessNum("I have my number. What's your guess?: ",0);
         int numGuessed=1;   //track number fo guesses
-        String prompt="";
+        String prompt;
 
         //if it is first guess, shouldn't be in the loop from the start
         //if the guess is right, it will get out of loop
         while(guessingValue!=answer){
-            //if guessingValue > answer
-            //  set prompt to "Too High! guess again: "
-            //if guessingValue < answer
-            //  set prompt to "Too Low! guess again: "
+
+            //determine prompt whether too high or too low
+            prompt = determinePrompt(answer,guessingValue);
 
             //using that prompt, get the other number
-            guessingValue = getGuessNum("",guessingValue);
+            guessingValue = getGuessNum(prompt,guessingValue);
+
             //increment numGuessed by 1
+            numGuessed++;
         }
         //display the number of guesses
-        System.out.println();
+        System.out.println("You got it in "+ numGuessed + " guesses!");
 
         //call the isContinue
         //return that value
-        return '?';
+        return isContinue();
     }
     public String determinePrompt(int answer, int guessingValue) {
         return (guessingValue > answer) ? "Too High! guess again: " : "Too Low! guess again: ";
@@ -43,7 +46,7 @@ public class GuessingGame {
 
     private int getGuessNum(String prompt,int currentValue){
         //display prompt to user
-        System.out.println(prompt);
+        System.out.print(prompt);
         //read users input
         //if user enter non-numerical number
         //        display: "you have entered non-numerical answer, WRONG!"
@@ -57,11 +60,12 @@ public class GuessingGame {
         return currentValue;
     }
 
-    private char isContinue(){
+    private boolean isContinue(){
         //prompt user to enter Y/y or N/n
+        System.out.println("\nDo you wish to play again (Y/N)?: ");
         //read user input
         //convert to lowercase
-        //return that value
-        return '?';
+        String yesOrNo = input.nextLine().toLowerCase(Locale.ROOT);
+        return yesOrNo.equals("yes") || yesOrNo.equals("y");
     }
 }
