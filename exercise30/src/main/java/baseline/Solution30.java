@@ -23,9 +23,9 @@ public class Solution30 {
 
     public String mulABWithTab(int i,int j){
         //make string that shows result i*j
-        //with tab space to the end of it
+        //without tab space to the end of it
         //return that string
-        return String.format("%d\t",i*j);
+        return String.format("%5d",i*j);
     }
 
 }

@@ -10,11 +10,11 @@ class Solution30Test {
     @Test
     void mulABWithTab1() {
         String resultTest1 = test.mulABWithTab(12,12);
-        assertEquals("144\t",resultTest1);
+        assertEquals("  144",resultTest1);
     }
     @Test
     void mulABWithTab2() {
         String resultTest2 = test.mulABWithTab(1,12);
-        assertEquals("12\t",resultTest2);
+        assertEquals("   12",resultTest2);
     }
 }
