@@ -1,0 +1,46 @@
+
+S
+java:S1854"=Remove this useless assignment to local variable "resultEID".(ÿÅØõ
+X
+java:S1854"=Remove this useless assignment to local variable "resultZIP".(èì×Ëûÿÿÿÿ
+W
+java:S1854"<Remove this useless assignment to local variable "resultLN".(ÂªùĞùÿÿÿÿ
+R
+java:S1854"<Remove this useless assignment to local variable "resultFN".(’¤öÏ
+C
+java:S1481"-Remove this unused "resultFN" local variable.(’¤öÏ
+H
+java:S1481"-Remove this unused "resultLN" local variable.(ÂªùĞùÿÿÿÿ
+I
+java:S1481".Remove this unused "resultZIP" local variable.(èì×Ëûÿÿÿÿ
+D
+java:S1481".Remove this unused "resultEID" local variable.(ÿÅØõ
+@
+java:S3457 "%String contains no format specifiers.(×í­¼ûÿÿÿÿ
+T
+java:S3400)"9Remove this method and declare a constant for this value.(Ö§”Óşÿÿÿÿ
+K
+java:S1172#"0Remove this unused method parameter "firstName".(ë‰Àêÿÿÿÿÿ
+T
+java:S34002"9Remove this method and declare a constant for this value.(Ö§”Óşÿÿÿÿ
+J
+java:S1172,"/Remove this unused method parameter "lastName".(ëáÄ‚øÿÿÿÿ
+h	java:S1005"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶»¶©ıÿÿÿÿ
+T
+java:S34009"9Remove this method and declare a constant for this value.(Ö§”Óşÿÿÿÿ
+I
+java:S11725".Remove this unused method parameter "zipCode".(¶»¶©ıÿÿÿÿ
+T
+java:S3400D"9Remove this method and declare a constant for this value.(Ö§”Óşÿÿÿÿ
+G
+java:S1172<"1Remove this unused method parameter "employeeID".(Öøœ
+C
+java:S1068"-Remove this unused "firstName" private field.(š„¦¿
+G
+java:S1068",Remove this unused "lastName" private field.(ºàÑïúÿÿÿÿ
+A
+java:S1068"+Remove this unused "zipCode" private field.(ŞùÎå
+I
+java:S1068".Remove this unused "employeeID" private field.(ŞÃ‡ßıÿÿÿÿ
+c
+java:S1144G"HRemove this unused private "stringToLowercaseCharArrayConverter" method.(¼Üù ıÿÿÿÿ
