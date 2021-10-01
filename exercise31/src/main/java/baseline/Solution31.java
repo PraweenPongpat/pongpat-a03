@@ -15,8 +15,9 @@ public class Solution31 {
         Solution31 sol = new Solution31();
 
         //get validated integer from user
-        int age = sol.getValidatedInt("");
-        int restingHR = sol.getValidatedInt("");
+        int age = sol.getValidatedInt("","age");
+        int restingHR = sol.getValidatedInt("","heart rate");
+
 
         //allocate KarvonenHeartRate class
         KarvonenHeartRate KHR = new KarvonenHeartRate(0,0);
@@ -26,7 +27,13 @@ public class Solution31 {
 
     }
 
-    private int getValidatedInt(String prompt) {
+    private int getValidatedInt(String prompt,String key) {
+        //begin loop
+        //display prompt
+        //read input
+        //if input is non-numerical value
+        //or if input is not positive number
+        //      display "input cannot be negative number
         return 0;
     }
 }

@@ -10,6 +10,12 @@ public class KarvonenHeartRate {
         this.age = age;
         this.restingHR = restingHR;
     }
+    public int getAge(){
+        return age;
+    }
+    public int getRestingHR(){
+        return restingHR;
+    }
 
     //method used to display tabular format
     public void displayTable() {
@@ -25,7 +31,7 @@ public class KarvonenHeartRate {
         //put together format <xx%    | Rate>
         //  where xx is intensity
         //  Rate is from calcRate method
-        return "";
+        return String.format("%d%%          | %d bpm",intensity,calcRate(intensity/100.00));
     }
 
     //perform calculation to get Rate, upon intensity
@@ -33,6 +39,6 @@ public class KarvonenHeartRate {
         //calculate Rate using : (((220 − age) − restingHR) × intensity) + restingHR
         //round that number to integers
         //return that value
-        return 0;
+        return (int)Math.round((((220-getAge())-getRestingHR())*intensity)+getRestingHR());
     }
 }
