@@ -6,7 +6,7 @@
 package baseline;
 
 public class Solution28 {
-    private static final int NUMBERS = 5;
+    public static final int NUMBERS = 5;
 
     public static void main(String[] args) {
         //allocate Solution28
@@ -28,12 +28,14 @@ public class Solution28 {
     }
 
     public double calcTotal(double[] numArr) {
+        double sum=0.0;
         //counted loop go through array
         for(int i = 0; i<numArr.length; i++){
             //each iteration, find the sum
+            sum += numArr[i];
         }
         //return the sum
-        return 0;
+        return sum;
     }
 
     private double getDouble() {
