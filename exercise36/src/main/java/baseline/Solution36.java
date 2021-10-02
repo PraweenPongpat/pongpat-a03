@@ -6,6 +6,7 @@
 package baseline;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Solution36 {
@@ -23,23 +24,27 @@ public class Solution36 {
 
         //start loop, as long as 'done' has yet entered, keep going
         //keyword 'done' uses a flag value of -999.9999
+        while (!(number > -999.9991 && number < -999.9989)) {
             //add number to a list, using .add
+            numArrayList.add(number);
             //ask user for the next input
-
+            number = sol.getDouble();
+        }
         //find min in the list using method min, passing in the list
-        double minData;
+        double minData = sol.min(numArrayList);
         //find max in the list, using method max, passing in the list
-        double maxData;
+        double maxData = sol.max(numArrayList);
         //find avg in the list, using method average, passing in the list
-        double avgData;
+        double avgData = sol.average(numArrayList);
         //find standard deviation of the list using std method
-        double stdVal;
+        double stdVal = sol.std(numArrayList);
 
         //display output
-        System.out.println();
+        System.out.printf("The average is %.2f%nThe minimum is %.2f%n",avgData,minData);
+        System.out.printf("The maximum is %.2f%nThe standard deviation is %.2f%n", maxData, stdVal);
 
     }
-    public double min(ArrayList<Double> numArrayList){
+    public double min(List<Double> numArrayList){
         double minVal = numArrayList.get(0);
         //loop to go through the list
         for(int i = 1; i<numArrayList.size(); i++) {
@@ -52,7 +57,7 @@ public class Solution36 {
         return minVal;
     }
 
-    public double max(ArrayList<Double> numArrayList){
+    public double max(List<Double> numArrayList){
         double maxVal = numArrayList.get(0);
         //loop to go through the list
         for(int i = 1; i<numArrayList.size(); i++) {
@@ -64,7 +69,7 @@ public class Solution36 {
         }
         return maxVal;
     }
-    public double average(ArrayList<Double> numArrayList){
+    public double average(List<Double> numArrayList){
         double sum=0.00;
         //loop to go through the list
         for (Double aDouble : numArrayList) {
@@ -77,7 +82,7 @@ public class Solution36 {
         //otherwise, return sum/size to get average
         return sum/numArrayList.size();
     }
-    public double std(ArrayList<Double> numArrayList){
+    public double std(List<Double> numArrayList){
         //use average method to find the average value
         double avg = average(numArrayList);
 
@@ -92,11 +97,22 @@ public class Solution36 {
     }
 
     private double getDouble() {
-        //prompt user to et a number
-        //read double from user
-        //if user entered a number, return that number
-        //if user entered 'done', return -999.9999 as a flag that 'done' appears
-        //if user entered something else, ask again
-        return 0;
+        while (true) {
+            //prompt user to et a number
+            System.out.print("Please enter a number: ");
+            String userInput;
+            //read double from user
+            //if user entered a number, return that number
+            //if user entered 'done', return -999.9999 as a flag that 'done' appears
+            try{
+                userInput = input.nextLine();
+                if(userInput.equals("done"))
+                    return -999.999;
+                return Double.parseDouble(userInput);
+            } catch (NumberFormatException nfe){
+                //if user entered something else, ask again
+                System.out.println("enter a number, or <done> to end");
+            }
+        }
     }
 }

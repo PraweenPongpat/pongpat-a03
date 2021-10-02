@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Solution36Test {
     Solution36 test = new Solution36();
-    private ArrayList<Double> list = new ArrayList<>();
+    private final ArrayList<Double> list = new ArrayList<>();
     @Test
     void minTest() {
         list.add(100.00);
