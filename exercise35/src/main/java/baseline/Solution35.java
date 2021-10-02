@@ -18,27 +18,30 @@ public class Solution35 {
         Solution35 sol = new Solution35();
 
         //declare arrayList
-        ArrayList<String> nameArrayList = new ArrayList<String>();
+        ArrayList<String> nameArrayList = new ArrayList<>();
 
         //get the first name using getName method
         String nameInputFromUser = sol.getName();
         //make loop, as long as input is not null, keep going
-   //     while() {
+        while(nameInputFromUser.length()!=0) {
             //Store name append to list using .add
+            nameArrayList.add(nameInputFromUser);
             //call getName methode again, asking the next name
-   //     }
+            nameInputFromUser = sol.getName();
+        }
         //call randomNumberGen on this, passing size of list for upper bound
-        int winnerIndex;
+        int winnerIndex = sol.randomNumberGen(nameArrayList.size());
 
         //display output, accessing the name of the list through winnerIndex
-        System.out.println();
+        System.out.println("The winner is...\""+nameArrayList.get(winnerIndex)+"\".");
     }
 
     private String getName() {
         //display prompt to user for name
+        System.out.print("Please enter a name: ");
         //read string from user
         //return that string
-        return "";
+        return input.nextLine();
     }
     public int randomNumberGen(int upperBound){
         //generate random number using Random class
