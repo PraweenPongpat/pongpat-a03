@@ -6,10 +6,12 @@
 package baseline;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Solution35 {
     public static final Scanner input = new Scanner(System.in);
+    public static final Random rand = new Random();
 
     public static void main(String[] args) {
         //allocate Solution35
@@ -21,10 +23,10 @@ public class Solution35 {
         //get the first name using getName method
         String nameInputFromUser = sol.getName();
         //make loop, as long as input is not null, keep going
-        while() {
+   //     while() {
             //Store name append to list using .add
             //call getName methode again, asking the next name
-        }
+   //     }
         //call randomNumberGen on this, passing size of list for upper bound
         int winnerIndex;
 
@@ -41,6 +43,6 @@ public class Solution35 {
     public int randomNumberGen(int upperBound){
         //generate random number using Random class
         //return the number generated
-        return 0;
+        return rand.nextInt(upperBound);
     }
 }
