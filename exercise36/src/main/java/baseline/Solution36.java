@@ -40,32 +40,40 @@ public class Solution36 {
 
     }
     public double min(ArrayList<Double> numArrayList){
-        double minVal=0;
+        double minVal = numArrayList.get(0);
         //loop to go through the list
+        for(int i = 1; i<numArrayList.size(); i++) {
             //each iteration, compare the current index with next index
             //if minVal is bigger the next index, update minVal to it
+            if(minVal > numArrayList.get(i))
+                minVal=numArrayList.get(i);
             //otherwise, pass continue the loop
-
+        }
         return minVal;
     }
 
     public double max(ArrayList<Double> numArrayList){
-        double maxVal=0;
+        double maxVal = numArrayList.get(0);
         //loop to go through the list
+        for(int i = 1; i<numArrayList.size(); i++) {
             //each iteration, compare the current index with next index
             //if maxVal is less the next index, update maxVal to it
+            if (maxVal < numArrayList.get(i))
+                maxVal = numArrayList.get(i);
             //otherwise, pass continue the loop
-
+        }
         return maxVal;
     }
     public double average(ArrayList<Double> numArrayList){
-        double sum=0;
+        double sum=0.00;
         //loop to go through the list
+        for (Double aDouble : numArrayList) {
             //each iteration, keep summing the value
-        if(true){
-            //if size of array is 0, meaning the array is empty
-            //return 0
+            sum += aDouble;
         }
+        //if size of array is 0, meaning the array is empty
+        if(numArrayList.isEmpty())
+            return 0;
         //otherwise, return sum/size to get average
         return sum/numArrayList.size();
     }
@@ -75,9 +83,12 @@ public class Solution36 {
 
         double std=0;
         //loop through the array
+        for (Double aDouble : numArrayList) {
             //each iteration, compute (value-mean)^2, keep summing
+            std += Math.pow(aDouble - avg, 2);
+        }
         //compute the square root of the sum
-        return std;
+        return Math.sqrt(std/numArrayList.size());
     }
 
     private double getDouble() {
