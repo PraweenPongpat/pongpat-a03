@@ -39,40 +39,61 @@ public class Solution40 {
         }
         //same idea as exercise39**************************************
         //make 2 maps to chain to the position
-        // firstname:position   (((John:"0", Tou:"1"...)))
+        // firstname:position   ((("0":John, "1":Tou...)))
         Map<String,String> firstNameMap = sol.makeSearchMap(rawInfo,0);
-        // lastname:position    (((Johnson:"0", Xiong:"1"...)))
+        // lastname:position    ((("0":Johnson, "1":Xiong...)))
         Map<String,String> lastNameMap = sol.makeSearchMap(rawInfo,1);
 
         //new idea for ex40 starts here, about how to process the data stored inside maps*************************************
-        int[] indexPplWithSubStr = sol.findPosition(searchingSubString,firstNameMap,lastNameMap);
+        ArrayList<Integer> indexPplWithSubStr = sol.findPosition(searchingSubString,firstNameMap,lastNameMap);
 
         //call method to display output passing the int[] index, peopleList
         sol.displayOutput(indexPplWithSubStr,peopleList);
     }
 
-    private void displayOutput(int[] indexPplWithSubStr, ArrayList<Map<String, String>> peopleList) {
+    private void displayOutput(ArrayList<Integer> indexPplWithSubStr, ArrayList<Map<String, String>> peopleList) {
         //start the go through the pplList base on the index that we have in int[]
         //display result in proper format
     }
 
-    private int[] findPosition(String searchingSubString, Map<String, String> firstNameMap, Map<String, String> lastNameMap) {
+    public ArrayList<Integer> findPosition(String searchingSubString, Map<String, String> firstNameMap, Map<String, String> lastNameMap) {
+        ArrayList<Integer> result = new ArrayList<>();
+
         //use the substring input search through all the keys in both maps
         //start searching the name in the firstNameMap
         //if the key contain substring, store the position into arrayList
         //next, search the name in the lastNameMap
         //if the key contain substring, store the position into arrayList
-
+        //note that firstNameMap and lastNameMap has the same size
+        for(int i=0; i<firstNameMap.size();i++){
+            if(firstNameMap.get(""+i).contains(searchingSubString)){
+                result.add(i);
+            }
+            if(lastNameMap.get(""+i).contains(searchingSubString)){
+                result.add(i);
+            }
+        }
         //sort the arrayList using API
+        Collections.sort(result);
 
-        //if the list is not empty, store the data in the list to int[]
+        //if the list is empty, return null
+        if(result.isEmpty())
+            return null;
+        //if the list is not empty
         //make a loop, go through the rest of arrayList
-        //  if number in the array is the same as current index of int[], do nothing
-        //      this means that we already found that person
-        //  if number in the array is not the same as current index of int[]
-        //      store the number from array to int[], increment index of int[]
-
-        //return the int[]
+        int size = result.size();
+        ArrayList<Integer> resultResized = new ArrayList<>();
+        resultResized.add(result.get(0));
+        for(int i=1;i<size;i++) {
+            //  if number in the array is the same as current index of int[], do nothing
+            //      this means that we already found that person
+            //  if number in the array is not the same as current index of int[]
+            //      store the number from array to int[], increment index of int[]
+            if(result.get(i)!=result.get(i-1))
+                resultResized.add(result.get(i));
+        }
+        //return the list
+        return resultResized;
     }
 
 
@@ -93,14 +114,14 @@ public class Solution40 {
         //return that map
         return result;
     }
-    //i used the same code from exercise39....******************************
+
     public Map<String, String> makeSearchMap(String[][] rawData,int index){
-        //create a Map<String,String> as a TreeMap
-        Map<String,String> result = new TreeMap<>();
+        //create a Map<String,String> as a map
+        Map<String,String> result = new HashMap<>();
         //make a loop with size of rawData time
         for(int i=0;i< rawData.length;i++) {
             // put rawData[counter][2] to the map
-            result.put(rawData[i][index],""+i);
+            result.put(""+i,rawData[i][index]);
         }
         //return the TreeMap
         return result;
