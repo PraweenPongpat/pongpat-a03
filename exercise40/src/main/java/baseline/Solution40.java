@@ -9,6 +9,7 @@ package baseline;
 import java.util.*;
 
 public class Solution40 {
+    public static final int TYPES_OF_DATA = 4;
     public static final Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -54,6 +55,29 @@ public class Solution40 {
     private void displayOutput(ArrayList<Integer> indexPplWithSubStr, ArrayList<Map<String, String>> peopleList) {
         //start the go through the pplList base on the index that we have in int[]
         //display result in proper format
+        System.out.println("\nName                  |Position             |Separation Date      |");
+        System.out.println("----------------------|---------------------|---------------------|");
+        //check for no matches
+        if(indexPplWithSubStr==null){
+            System.out.println("no matches");
+            return;
+        }
+        int tempIndex;
+        String temp;
+        for(int i=0; i<indexPplWithSubStr.size();i++){
+            tempIndex = indexPplWithSubStr.get(i);
+            temp = ""+indexPplWithSubStr.get(i);
+            System.out.printf(" %-9s",peopleList.get(tempIndex).get(temp));
+            for(int j=1; j<TYPES_OF_DATA;j++){
+                temp =peopleList.get(tempIndex).get(temp);
+                if(j==1)//print lastname
+                    System.out.printf(" %-11s|",peopleList.get(tempIndex).get(temp));
+                else //print position, date
+                    System.out.printf(" %-20s|",peopleList.get(tempIndex).get(temp));
+
+            }
+            System.out.println(" ");
+        }
     }
 
     public ArrayList<Integer> findPosition(String searchingSubString, Map<String, String> firstNameMap, Map<String, String> lastNameMap) {
@@ -96,8 +120,6 @@ public class Solution40 {
         return resultResized;
     }
 
-
-
     //i used the same code from exercise39....******************************
     public Map<String,String> makeMap (String[][] rawData, int i){
         //create a Map<String,String>
@@ -126,12 +148,12 @@ public class Solution40 {
         //return the TreeMap
         return result;
     }
+
     private String getString() {
         //prompt user for the substring
+        System.out.print("Enter the search string: ");
         //read the input
         //return that string
-        return "";
+        return input.nextLine();
     }
-
-
 }
