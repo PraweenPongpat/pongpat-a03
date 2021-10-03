@@ -1,9 +1,10 @@
 package baseline;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PasswordGenerator {
+    Random rand = new Random();
+
     //declare the variables needed
     private int minLen;
     private int numSpChar;
@@ -28,37 +29,35 @@ public class PasswordGenerator {
     }
 
     public String makePassword() {
-        //create three numbers based on the variables needed
-        //to track as index creating random sp char from array
-        int randSpCharIndex;     //  !#$%&'()*+,-/?@[]^_`{|}~
-        //to track as index creating random alphabet a-z and A-Z
-        int randAlphabetIndex;
-        //to track as index creating random numbers 0-9
-        int randDigitIndex;
-
         //create set of characters to randomly generate
         char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l'
                             ,'m','n','o','p','q','r','s','t','u','v','w','x','y','z'
                             ,'A','B','C','D','E','F','G','H','I','J','K','M','N'
                             ,'O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-        char[] specialChar = "!#$%&'()*+,-/?@[]^_`{|}~".toCharArray();
+        char[] specialChar = "!#$%&()*+-/?@[]^_~".toCharArray();
         char[] digit = "0123456789".toCharArray();
-        String result="";
 
-        //allocate the list used to access to make a password
-        List<char[]> list = new ArrayList<char[]>();
-        //add all three char[] above to the list
+        //allocate the list used to access to store a password
+        ArrayList<Character> arrayList = new ArrayList<>();
 
+        //take one type of characters at a time to ensure the amount store inside
+        //loop to generate random special characters
+        //      each iteration, create random number 0-to-sizeOfSpCharArray, access char[] with that index
+        //      add to list
+        //loop to generate random digits, same idea as above
+        //loop to generate random alphabets, same idea as above
 
-        //make a loop to keep going as long as number of letters is still less than either digit or specialChar
-        //  each iteration, create random number between 0-2 to access either alphabet, specialChar, or digit respectively
-        //      keep track of the number accesses of each mode
-        //  access the list number generate the random number again within 0-sizeOfChar[]
-        //      get the info of that char, append it String result
-        //  if any of number of access mode reaches the times of condition, ensure not to over access it
-        //keep the loop going till condition is met
+        //this point, we should have a list of array with correct size that met the constraint
+        //randomly re-arrange them to make at least a strong password
+
 
         //since result as been appending in the loop, return it
-        return result;
+        return "";
+    }
+
+    public int randomNumberGenerator(int upperBound){
+        //create a random number from the given upper bound
+        //using Random class
+        return 0;
     }
 }
