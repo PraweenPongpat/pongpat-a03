@@ -7,7 +7,9 @@ package baseline;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Solution39 {
     public static void main(String[] args) {
@@ -40,20 +42,30 @@ public class Solution39 {
 
     public Map<String,String> makeMap (String[][] rawData, int i){
         //create a Map<String,String>
+        Map<String,String> result = new HashMap<>();
         //create temp variable
+        String temp=""+i;
         //make a loop running to the size of rawData[i] times
-        //  assign temp = string[i][counter]
-        //  put temp in the map
+        for(int j=0; j< rawData[i].length;j++) {
+            //  put temp in the map
+            result.put(temp,rawData[i][j]);
+            //  assign temp = string[i][counter]
+            temp = rawData[i][j];
+        }
         //return that map
-        return ;
+        return result;
     }
 
     public Map<String, String> makeTreeMap (String[][] rawData){
         //create a Map<String,String> as a TreeMap
+        Map<String,String> result = new TreeMap<>();
         //make a loop with size of rawData time
-        // put rawData[counter][2] to the map
+        for(int i=0;i< rawData.length;i++) {
+            // put rawData[counter][2] to the map
+            result.put(rawData[i][1],""+i);
+        }
         //return the TreeMap
-        return ;
+        return result;
     }
 
 
