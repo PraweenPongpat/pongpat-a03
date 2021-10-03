@@ -3,7 +3,6 @@
  *  Copyright 2021 Praween Pongpat
  */
 
-
 package baseline;
 
 import java.util.*;
@@ -64,16 +63,16 @@ public class Solution40 {
         }
         int tempIndex;
         String temp;
-        for(int i=0; i<indexPplWithSubStr.size();i++){
-            tempIndex = indexPplWithSubStr.get(i);
-            temp = ""+indexPplWithSubStr.get(i);
-            System.out.printf(" %-9s",peopleList.get(tempIndex).get(temp));
-            for(int j=1; j<TYPES_OF_DATA;j++){
-                temp =peopleList.get(tempIndex).get(temp);
-                if(j==1)//print lastname
-                    System.out.printf(" %-11s|",peopleList.get(tempIndex).get(temp));
+        for (Integer integer : indexPplWithSubStr) {
+            tempIndex = integer;
+            temp = "" + integer;
+            System.out.printf(" %-9s", peopleList.get(tempIndex).get(temp));
+            for (int j = 1; j < TYPES_OF_DATA; j++) {
+                temp = peopleList.get(tempIndex).get(temp);
+                if (j == 1)//print lastname
+                    System.out.printf(" %-11s|", peopleList.get(tempIndex).get(temp));
                 else //print position, date
-                    System.out.printf(" %-20s|",peopleList.get(tempIndex).get(temp));
+                    System.out.printf(" %-20s|", peopleList.get(tempIndex).get(temp));
 
             }
             System.out.println(" ");
@@ -102,7 +101,7 @@ public class Solution40 {
 
         //if the list is empty, return null
         if(result.isEmpty())
-            return null;
+            return new ArrayList<>();
         //if the list is not empty
         //make a loop, go through the rest of arrayList
         int size = result.size();
@@ -113,7 +112,7 @@ public class Solution40 {
             //      this means that we already found that person
             //  if number in the array is not the same as current index of int[]
             //      store the number from array to int[], increment index of int[]
-            if(result.get(i)!=result.get(i-1))
+            if(!Objects.equals(result.get(i), result.get(i - 1)))
                 resultResized.add(result.get(i));
         }
         //return the list
