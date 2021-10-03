@@ -18,6 +18,9 @@ public class PasswordGenerator {
     }
 
     //getters to access the value
+    public int getMinLen(){
+        return minLen;
+    }
     public int getNumSpChar(){
         return numSpChar;
     }
@@ -50,6 +53,11 @@ public class PasswordGenerator {
         }
         //loop to generate random alphabets, same idea as above, but with over-random size up to 5
         for(int i=0; i<((getNumDigit()+getNumSpChar())*2+rand.nextInt(5));i++){
+            arrayList.add(alphabet[rand.nextInt(alphabet.length)]);
+        }
+        //added loop just in case the letter type constraint is met before the length is met
+        //add random letters to fill it
+        while(arrayList.size()<getMinLen()){
             arrayList.add(alphabet[rand.nextInt(alphabet.length)]);
         }
 
