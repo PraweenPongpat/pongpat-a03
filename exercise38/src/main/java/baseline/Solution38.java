@@ -32,12 +32,19 @@ public class Solution38 {
     }
 
     public int[] filterEvenNumbers(int[] originalOddAndEven) {
-        int[] result;   //declare an int[] with same as original size
+        int[] result = new int[originalOddAndEven.length];   //declare an int[] with same as original size
+        int resultIndex = 0;
         //make a loop going through the array, each iteration...
-        //  if number is even (X mod 2 == 0), store it into new array
-        //      increment the index of result array
-        //  if number is odd (X mod 2 == 1), do nothing about it
+        for(int i = 0; i< originalOddAndEven.length; i++) {
+            //  if number is even (X mod 2 == 0)
 
+            if((originalOddAndEven[i]%2)==0){
+                //  store it into new array and increment the index of result array
+                result[resultIndex] = originalOddAndEven[i];
+                resultIndex++;
+            }
+            //  if number is odd (X mod 2 == 1), do nothing about it
+        }
         //return the result array
         return result;
     }
@@ -65,15 +72,17 @@ public class Solution38 {
 
     private int[] stringArrToIntArrConv(String[] originalNoSpace) {
         //make an integer array size of string[]
+        int[] intArr = {};
         //make a loop go through the size
         //each iteration, convert the element to integer using parseInt
         //  store that into each element of int[]
         //return that int[]
+        return intArr;
     }
 
     private String[] arrayListToStringConv(ArrayList<String> stringArrList) {
         //create a String[] with size of arrayList
-        String[] noSpace;
+        String[] noSpace={};
         //make a loop go through the size of arrayList
         //  each iteration, store element in arrayList to string[]
         //return that string
