@@ -1,0 +1,60 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 3 Solutions
+ *  Copyright 2021 Praween Pongpat
+ */
+
+package baseline;
+
+
+import java.util.ArrayList;
+import java.util.Map;
+
+public class Solution39 {
+    public static void main(String[] args) {
+        Solution39 sol = new Solution39();
+
+        //hard code the input from each string[] from the given example
+        //format of string[] is firstName, lastName, Position, Date-of-Separation
+        String[][] rawInfo = {{"John", "Johnson", "Manager", "2016-12-31"},
+                             {"Tou","Xiong","Software Engineer","2016-10-05"},
+                             {"Michaela","Michaelson","District Manager","2015-12-19"},
+                             {"Jake","Jacobson","Programmer",""},
+                             {"Jacquelyn","Jackson","DBA",""},
+                             {"Sally","Webber","Web Developer","2015-12-18"}};
+
+        //make a list of maps to store all the raw data
+        ArrayList<Map<String,Integer>> peopleList = new ArrayList<>();
+        //make a loop to add to list through all existed number of people, each iteration...
+        //  create a allInfoMap, using makeMap method passing in string[][] rawData
+        //      (((i.e. first iteration, map "0":John, John,:Johnson, Johnson:Manager, Manager:"2016-12-31")))
+        //  add the map to the list
+
+        //create a TreeMap, storing only lastNames to their person number
+        //using a method makeTreeMap, passing in String[][] rawData
+        //      (((Johnson:"0", Xiong:"1"...)))
+
+        //call a display method to output the table
+        //passing in peopleList and lastnameMaps
+
+    }
+
+    public Map<String,String> makeMap (String[][] rawData, int i){
+        //create a Map<String,String>
+        //create temp variable
+        //make a loop running to the size of rawData[i] times
+        //  assign temp = string[i][counter]
+        //  put temp in the map
+        //return that map
+        return ;
+    }
+
+    public Map<String, String> makeTreeMap (String[][] rawData){
+        //create a Map<String,String> as a TreeMap
+        //make a loop with size of rawData time
+        // put rawData[counter][2] to the map
+        //return the TreeMap
+        return ;
+    }
+
+
+}
