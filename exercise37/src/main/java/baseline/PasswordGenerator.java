@@ -6,9 +6,9 @@ public class PasswordGenerator {
     Random rand = new Random();
 
     //declare the variables needed
-    private int minLen;
-    private int numSpChar;
-    private int numDigit;
+    private final int minLen;
+    private final int numSpChar;
+    private final int numDigit;
 
     //constructor
     public PasswordGenerator(int minLen, int numSpChar, int numDigit) {
@@ -18,9 +18,6 @@ public class PasswordGenerator {
     }
 
     //getters to access the value
-    public int getMinLen(){
-        return minLen;
-    }
     public int getNumSpChar(){
         return numSpChar;
     }
@@ -44,20 +41,30 @@ public class PasswordGenerator {
         //loop to generate random special characters
         //      each iteration, create random number 0-to-sizeOfSpCharArray, access char[] with that index
         //      add to list
+        for(int i=0; i<getNumSpChar();i++){
+            arrayList.add(specialChar[rand.nextInt(specialChar.length)]);
+        }
         //loop to generate random digits, same idea as above
-        //loop to generate random alphabets, same idea as above
+        for(int i=0; i<getNumDigit();i++){
+            arrayList.add(digit[rand.nextInt(digit.length)]);
+        }
+        //loop to generate random alphabets, same idea as above, but with over-random size up to 5
+        for(int i=0; i<((getNumDigit()+getNumSpChar())*2+rand.nextInt(5));i++){
+            arrayList.add(alphabet[rand.nextInt(alphabet.length)]);
+        }
 
         //this point, we should have a list of array with correct size that met the constraint
         //randomly re-arrange them to make at least a strong password
-
-
+        //using .shuffle methods, I choose to do 20 times of shuffling
+        for(int i=0; i<20;i++){
+            Collections.shuffle(arrayList);
+        }
+        StringBuilder result= new StringBuilder();
+        //build the result string
+        for (Character character : arrayList) {
+            result.append(character);
+        }
         //since result as been appending in the loop, return it
-        return "";
-    }
-
-    public int randomNumberGenerator(int upperBound){
-        //create a random number from the given upper bound
-        //using Random class
-        return 0;
+        return result.toString();
     }
 }
