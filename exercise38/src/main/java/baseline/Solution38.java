@@ -16,7 +16,7 @@ public class Solution38 {
         Solution38 sol = new Solution38();
 
         //get string from user using getSting method
-        String userInputString = sol.getString();
+       String userInputString = sol.getString();
 
         //split the original string with using <space> as a separator
         String[] originalNoSpace = sol.whiteSpaceScreener(userInputString);
@@ -28,22 +28,30 @@ public class Solution38 {
         int[] filteredArr = sol.filterEvenNumbers(originalOddAndEven);
 
         //display the numbers in the filtered array
-        System.out.println();
+        System.out.print("the list is:");
+        for (int j : filteredArr) {
+            System.out.print(" " + j);
+        }
     }
 
     public int[] filterEvenNumbers(int[] originalOddAndEven) {
-        int[] result = new int[originalOddAndEven.length];   //declare an int[] with same as original size
-        int resultIndex = 0;
-        //make a loop going through the array, each iteration...
-        for(int i = 0; i< originalOddAndEven.length; i++) {
-            //  if number is even (X mod 2 == 0)
+        //create an arrayList to keep appending dynamically
+        ArrayList<Integer> resultArrList = new ArrayList<>();
 
-            if((originalOddAndEven[i]%2)==0){
+        //make a loop going through the array, each iteration...
+        for (int j : originalOddAndEven) {
+            //  if number is even (X mod 2 == 0)
+            if ((j % 2) == 0) {
                 //  store it into new array and increment the index of result array
-                result[resultIndex] = originalOddAndEven[i];
-                resultIndex++;
+                resultArrList.add(j);
             }
             //  if number is odd (X mod 2 == 1), do nothing about it
+        }
+
+        //transfer the data in the list to int[]
+        int[] result = new int[resultArrList.size()];
+        for(int i=0; i<result.length;i++){
+            result[i] = resultArrList.get(i);
         }
         //return the result array
         return result;
@@ -56,44 +64,58 @@ public class Solution38 {
 
         //crate a string for storing result with no space
         ArrayList<String> stringArrList = new ArrayList<>();
-        String tempString;
+        StringBuilder tempString= new StringBuilder();
 
         //make a loop go through the size of the charArray
-        //  init tempString to null
-        //  each iteration, check if that index is a digit
-        //  if so, append the number into the tempString
-        //  if not, store tempString as an element of arrayList
+        for (char c : charArray) {
+            //  init tempString to null
+            //  each iteration, check if that index is a digit
+            //  if so, appended the number into the tempString
+            //  if not, store tempString as an element of arrayList
+            if (Character.isDigit(c)) {
+                tempString.append(c);
+            } else if (c == ' ' || c == '\n') {
+                stringArrList.add(tempString.toString());
+                tempString = new StringBuilder();
+            }
+        }
+        //add the last tempString to arrayList
+        stringArrList.add(tempString.toString());
 
-        //convert the arrayList into a string
-        String[] noSpace = arrayListToStringConv(stringArrList);
-        //return the string, i.e. {"2","4","5","10","12","13"}
-        return noSpace;
+        //convert the arrayList into a string and return it
+        return arrayListToStringConv(stringArrList);
     }
 
     private int[] stringArrToIntArrConv(String[] originalNoSpace) {
         //make an integer array size of string[]
-        int[] intArr = {};
+        int[] intArr = new int[originalNoSpace.length];
         //make a loop go through the size
-        //each iteration, convert the element to integer using parseInt
-        //  store that into each element of int[]
+        for(int i=0; i<originalNoSpace.length; i++) {
+            //each iteration, convert the element to integer using parseInt
+            //  store that into each element of int[]
+            intArr[i] = Integer.parseInt(originalNoSpace[i]);
+        }
         //return that int[]
         return intArr;
     }
 
     private String[] arrayListToStringConv(ArrayList<String> stringArrList) {
         //create a String[] with size of arrayList
-        String[] noSpace={};
+        String[] noSpace = new String[stringArrList.size()];
         //make a loop go through the size of arrayList
-        //  each iteration, store element in arrayList to string[]
+        for(int i=0; i<stringArrList.size();i++) {
+            //  each iteration, store element in arrayList to string[]
+            noSpace[i] = stringArrList.get(i);
+        }
         //return that string
         return noSpace;
     }
 
-
     private String getString(){
         //display prompt for a set of numbers separate by space
+        System.out.print("Please enter a list of numbers separate by space: ");
         //read string from user
         //return that string
-        return "";
+        return input.nextLine();
     }
 }
