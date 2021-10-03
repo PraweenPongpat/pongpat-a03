@@ -5,13 +5,13 @@
 
 package baseline;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class Solution39 {
+    private static final int TYPES_OF_DATA = 4;
     public static void main(String[] args) {
         Solution39 sol = new Solution39();
 
@@ -25,18 +25,53 @@ public class Solution39 {
                              {"Sally","Webber","Web Developer","2015-12-18"}};
 
         //make a list of maps to store all the raw data
-        ArrayList<Map<String,Integer>> peopleList = new ArrayList<>();
+        ArrayList<Map<String, String>> peopleList = new ArrayList<>();
         //make a loop to add to list through all existed number of people, each iteration...
-        //  create a allInfoMap, using makeMap method passing in string[][] rawData
-        //      (((i.e. first iteration, map "0":John, John,:Johnson, Johnson:Manager, Manager:"2016-12-31")))
-        //  add the map to the list
-
+        for(int i=0;i<rawInfo.length;i++) {
+            //  create a allInfoMap, using makeMap method passing in string[][] rawData
+            //      (((i.e. first iteration, map "0":John, John,:Johnson, Johnson:Manager, Manager:"2016-12-31")))
+            Map<String,String> tempMap = sol.makeMap(rawInfo,i);
+            //  add the map to the list
+            peopleList.add(tempMap);
+        }
         //create a TreeMap, storing only lastNames to their person number
         //using a method makeTreeMap, passing in String[][] rawData
         //      (((Johnson:"0", Xiong:"1"...)))
+        Map<String,String> lastNameMap = sol.makeTreeMap(rawInfo);
 
-        //call a display method to output the table
-        //passing in peopleList and lastnameMaps
+        //display outputs
+        sol.displayTable(peopleList,lastNameMap);
+
+    }
+
+    private void displayTable(ArrayList<Map<String, String>> peopleList, Map<String, String> lastNameMap) {
+        //get the result of lastNameMap, use that result chain the peopleList
+        String[] tempArr = new String[lastNameMap.size()];
+        int counter=0;
+
+        //retrieve all keys to determine which to display first
+        for(Map.Entry<String,String> entry : lastNameMap.entrySet()) {
+            tempArr[counter] = entry.getKey();
+            counter++;
+        }
+        String tempIndex;
+        String temp;
+        System.out.println("Name                  |Position             |Separation Date      |");
+        System.out.println("----------------------|---------------------|---------------------|");
+        for (String s : tempArr) {
+            tempIndex = lastNameMap.get(s);
+            temp = peopleList.get(Integer.parseInt(tempIndex)).get(tempIndex);
+            System.out.printf(" %-9s", temp);//print first name
+            for (int j = 1; j < TYPES_OF_DATA; j++) {
+                if (j == 1)//print last name
+                    System.out.printf(" %-11s|", peopleList.get(Integer.parseInt(tempIndex)).get(temp));
+                else //print position or date
+                    System.out.printf(" %-20s|", peopleList.get(Integer.parseInt(tempIndex)).get(temp));
+
+                temp = peopleList.get(Integer.parseInt(tempIndex)).get(temp);
+            }
+            System.out.println("");
+        }
 
     }
 
